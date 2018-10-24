@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="triangle" class="com.ankur.learning.Triangle">
+        <!--property name="message" value="Triangle drawing via setter "/-->
+        <constructor-arg value="Triangle drawn constructor"/>
+    </bean>
+
+    <bean id="rectangle" class="com.ankur.learning.Rectangle">
+        <property name="pointA" ref="pointZero"/>
+        <property name="pointB">
+            <bean class="com.ankur.learning.Point">
+                <property name="x" value="0"/>
+                <property name="y" value="20"/>
+            </bean>
+        </property>
+        <property name="pointC" ref="pointTwo"/>
+        <property name="pointD" ref="pointThree"/>
+    </bean>
+
+    <bean id="pointZero" class="com.ankur.learning.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="0"/>
+    </bean>
+
+    <bean id="pointTwo" class="com.ankur.learning.Point">
+        <property name="x" value="20"/>
+        <property name="y" value="0"/>
+    </bean>
+
+    <bean id="pointThree" class="com.ankur.learning.Point">
+        <property name="x" value="20"/>
+        <property name="y" value="20"/>
+    </bean>
+
+</beans>
