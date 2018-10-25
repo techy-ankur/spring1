@@ -1,9 +1,12 @@
 package com.ankur.learning;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
 /**
  * @author ankurpratik on 23/10/18.
  */
-public class Rectangle implements Shape {
+public class Rectangle implements Shape, InitializingBean, DisposableBean {
 
     private Point pointA;
     private Point pointB;
@@ -44,6 +47,18 @@ public class Rectangle implements Shape {
 
     @Override
     public void onDraw() {
-        System.out.println(pointA.toString() + pointB.toString()+ pointC.toString()+ pointD.toString());
+        System.out.println("Rectangle onDraw "+pointA.toString() + pointB.toString()+ pointC.toString()+ pointD.toString());
+    }
+
+    //called before bean is destoryed
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("Bean is destroyed");
+    }
+
+    //called before bean initialization
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Bean is initialized");
     }
 }

@@ -27,4 +27,12 @@ public class Triangle implements Shape {
     public void onDraw() {
         System.out.println(message);
     }
+
+    public void init(){
+        System.out.println("Triangle will be created");
+    }
+
+    public void cleanUp(){
+        System.out.println("Triangle is destroyed");
+    }
 }
