@@ -1,12 +1,16 @@
 package com.ankur.learning;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 /**
  * @author ankurpratik on 23/10/18.
  */
-public class Rectangle implements Shape, InitializingBean, DisposableBean {
+public class Rectangle implements Shape, InitializingBean, DisposableBean , ApplicationContextAware , BeanNameAware{
 
     private Point pointA;
     private Point pointB;
@@ -60,5 +64,15 @@ public class Rectangle implements Shape, InitializingBean, DisposableBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("Bean is initialized");
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("here context is available");
+    }
+
+    @Override
+    public void setBeanName(String s) {
+        System.out.println("Bean name "+s);
     }
 }
